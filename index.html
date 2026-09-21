@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite Especial</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ffe6e6;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1, h2 {
+      color: #d10047;
+    }
+    p {
+      color: #333;
+      font-size: 18px;
+    }
+    button {
+      padding: 12px 35px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 0 10px;
+      color: white;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+    #btn-sim {
+      background-color: #28a745;
+    }
+    #btn-sim:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+    #btn-nao {
+      background-color: #dc3545;
+      transition: left 0.2s ease, top 0.2s ease;
+    }
+    #mensagem-sucesso {
+      display: none; /* Mantém a mensagem de sucesso escondida no início */
+    }
+    #tela-principal {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tela Inicial do Convite -->
+  <div id="tela-principal">
+    <h1>Sai comigo hoje? ❤️</h1>
+    <div>
+      <button id="btn-sim">Sim</button>
+      <button id="btn-nao">Não</button>
+    </div>
+  </div>
+
+  <!-- Tela de Sucesso (após clicar no Sim) -->
+  <div id="mensagem-sucesso">
+    <h2>Parabéns! 🎉</h2>
+    <p>Espero que tenha clicado de primeira no sim! Me manda seu numero pra gente combinar certinho... 😄✨</p>
+  </div>
+
+  <script>
+    const btnSim = document.getElementById('btn-sim');
+    const btnNao = document.getElementById('btn-nao');
+    const telaPrincipal = document.getElementById('tela-principal');
+    const telaSucesso = document.getElementById('mensagem-sucesso');
+
+    // Lógica para o botão "Não" fugir do mouse
+    btnNao.addEventListener('mouseover', () => {
+      btnNao.style.position = 'absolute';
+      const maxWidth = window.innerWidth - btnNao.offsetWidth;
+      const maxHeight = window.innerHeight - btnNao.offsetHeight;
+      
+      const randomX = Math.floor(Math.random() * maxWidth);
+      const randomY = Math.floor(Math.random() * maxHeight);
+      
+      btnNao.style.left = `${randomX}px`;
+      btnNao.style.top = `${randomY}px`;
+    });
+
+    // Lógica para o botão "Sim"
+    btnSim.addEventListener('click', () => {
+      // 1. Esconde a pergunta e mostra a tela de sucesso
+      telaPrincipal.style.display = 'none';
+      telaSucesso.style.display = 'block';
+      
+      // 2. CONFIGURAÇÃO DO WHATSAPP (Coloque seu número com DDD após o 55, sem espaços)
+      const seuNumero = "5579999999999"; 
+      const mensagem = encodeURIComponent("Oiii! Eu cliquei no SIM pro date! ❤️");
+      
+      // 3. Redireciona para o WhatsApp após 1,5 segundos
+      setTimeout(() => {
+        window.location.href = `https://wa.me/${79988410626}?text=${mensagem}`;
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>
