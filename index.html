@@ -221,19 +221,19 @@
             <button class="btn-primary" onclick="nextScreen('screen3')">Combinado -></button>
         </div>
 
-        <!-- TELA 3: Comida -->
+        <!-- TELA 3: Opções de Rolê -->
         <div id="screen3" class="screen">
             <span class="subtitle">Parte séria da noite</span>
-            <h1>O que você quer comer?</h1>
-            <p style="font-size: 12px;">Escolha uma. Eu cuido da reserva, do caminho e de fingir que sei escolher vinho.</p>
+            <h1>Qual vai ser o nosso rolê?</h1>
+            <p style="font-size: 12px;">Escolha uma opção. Eu cuido dos detalhes, do trajeto e de garantir a melhor experiência.</p>
             
             <div class="food-grid" id="foodGrid">
                 <div class="food-item" onclick="selectFood(this, 'Pizza')"><span>🍕</span> Pizza</div>
                 <div class="food-item" onclick="selectFood(this, 'Sushi')"><span>🍣</span> Sushi</div>
-                <div class="food-item" onclick="selectFood(this, 'Hot Dog')"><span>🌭</span> Hot Dog</div>
-                <div class="food-item" onclick="selectFood(this, 'Hambúrguer')"><span>🍔</span> Lanche</div>
-                <div class="food-item" onclick="selectFood(this, 'Carne')"><span>🥩</span> Carne</div>
-                <div class="food-item" onclick="selectFood(this, 'Italiano')"><span>🍝</span> Italiano</div>
+                <div class="food-item" onclick="selectFood(this, 'Cinema')"><span>🍿</span> Cinema</div>
+                <div class="food-item" onclick="selectFood(this, 'Piquenique')"><span>🧺</span> Piquenique</div>
+                <div class="food-item" onclick="selectFood(this, 'Viagem de Moto')"><span>🏍️</span> Viagem de Moto</div>
+                <div class="food-item" onclick="selectFood(this, 'Praia')"><span>🏖️</span> Praia</div>
             </div>
 
             <button class="btn-primary" onclick="finishSetup()">Confirmar encontro &lt;3</button>
@@ -255,7 +255,7 @@
                     <div class="summary-value" id="resTime">-</div>
                 </div>
                 <div class="summary-row">
-                    <div class="summary-label">MENU</div>
+                    <div class="summary-label">ROLÊ</div>
                     <div class="summary-value" id="resFood">-</div>
                 </div>
                 <div class="summary-row">
@@ -264,7 +264,7 @@
                 </div>
             </div>
 
-            <!-- Botão do WhatsApp Adicionado Aqui -->
+            <!-- Botão do WhatsApp -->
             <button class="btn-whatsapp" onclick="enviarParaWhatsApp()">Confirmar pelo WhatsApp 📱</button>
 
             <button class="btn-no" style="margin-top: 10px; width: 100%;" onclick="location.reload()">Refazer escolhas</button>
@@ -298,7 +298,7 @@
             document.getElementById(screenId).classList.add('active');
         }
 
-        // Lógica de seleção de comida
+        // Lógica de seleção do rolê (mantivemos o nome das variáveis internas pra facilitar)
         let selectedFood = '';
         function selectFood(element, foodName) {
             document.querySelectorAll('.food-item').forEach(item => item.classList.remove('selected'));
@@ -312,7 +312,7 @@
             const timeVal = document.getElementById('timeInput').value;
 
             if(!dateVal || !selectedFood) {
-                alert("Por favor, escolha um dia e o que vamos comer!");
+                alert("Por favor, escolha um dia e o que vamos fazer!");
                 return;
             }
 
@@ -337,7 +337,7 @@
             const numero = "5579988410626";
             
             // Montando a mensagem com os dados que ela escolheu
-            const mensagem = `Oiii! Eu disse SIM pro date! ❤️\n\n🗓️ *Dia:* ${dataEscolhida}\n⏰ *Hora:* ${horaEscolhida}\n🍽️ *Vamos comer:* ${comidaEscolhida}\n\nJá tô pronta!`;
+            const mensagem = `Oiii! Eu disse SIM pro date! ❤️\n\n🗓️ *Dia:* ${dataEscolhida}\n⏰ *Hora:* ${horaEscolhida}\n🎯 *Nosso rolê:* ${comidaEscolhida}\n\nJá tô pronta!`;
             
             // Codificando o texto para URL e abrindo o WhatsApp
             const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
